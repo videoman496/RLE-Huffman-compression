@@ -21,12 +21,12 @@ Tento projekt sa zameriava na vývoj nástroja pre kompresiu a dekompresiu súbo
 
 ## Kompilácia Projektu
 Projekt môžete skompilovať pomocou priloženého `Makefile`. Stačí spustiť nasledujúci príkaz v adresári projektu:  
-make
+`make`
 Tento príkaz vytvorí spustiteľný súbor, ktorý môžete použiť na kompresiu alebo dekompresiu súborov.
 
 ## Spustenie Programu
 Po skompilovaní môžete program spustiť nasledovne:  
-./program -c|-d -h|-r input_file output_file
+`./program -c|-d -h|-r input_file output_file`
 Kde:
 - `-c` značí kompresiu
 - `-d` značí dekompresiu
