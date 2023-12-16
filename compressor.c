@@ -1,16 +1,10 @@
 #include "compressor.h"
-#define MAX_SZ 128
-#define MAX_CODE_LEN 64
+
 
 int counts[MAX_SZ];
 char codes[MAX_SZ][MAX_CODE_LEN];
 
-typedef struct Node {
-    char character;
-    int count;
-    struct Node *left;
-    struct Node *right;
-} Node;
+
 
 void calculate_prob(char *str, int *counts) {
     int len = strlen(str);
