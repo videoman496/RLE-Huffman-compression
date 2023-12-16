@@ -1,7 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <ctype.h>
 #include "compressor.h"
 #define MAX_SZ 128
 #define MAX_CODE_LEN 64
