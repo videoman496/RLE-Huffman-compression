@@ -1,5 +1,5 @@
 #include "compressor.h"
-
+#include <ctype.h>
 
 int counts[MAX_SZ];
 char codes[MAX_SZ][MAX_CODE_LEN];
