@@ -2,11 +2,11 @@ CFLAGS= -std=c99 -g
 
 all: main
 
+main: main.o compressor.o
+	gcc main.o compressor.o -o main
+
 %.o: %.c
 	gcc -c -o $@ $< $(CFLAGS)
 
-MAIN: main.o compressor.o
-	gcc main.o compressor.o -o mIN
-
 clean:
-	rm *.o MAIN
+	rm -f *.o main
