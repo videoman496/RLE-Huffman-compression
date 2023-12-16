@@ -1,16 +1,12 @@
-CC = gcc
-CFLAGS = -Wall -g -w
+CFLAGS= -std=c99 -g 
 
-all: program
+all: main
 
-program: main.o compressor.o
-	$(CC) $(CFLAGS) -o program main.o compressor.o
+%.o: %.c
+	gcc -c -o $@ $< $(CFLAGS)
 
-main.o: main.c compressor.h
-	$(CC) $(CFLAGS) -c main.c
-
-compressor.o: compressor.c compressor.h
-	$(CC) $(CFLAGS) -c compressor.c
+MAIN: main.o compressor.o
+	gcc main.o compressor.o -o mIN
 
 clean:
-	rm -f *.o program
+	rm *.o MAIN
