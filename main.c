@@ -1,5 +1,5 @@
 #include "compressor.h"
-#include "compressor.c"
+
 
 int main(int argc, char* argv[]) {
     if (argc != 5) {
