@@ -1,25 +1,20 @@
-#ifndef COMPRESSOR_H
-#define COMPRESSOR_H
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
 #define MAX_SZ 128
 #define MAX_CODE_LEN 64
 
-// Объявление структуры Node
+char codes[MAX_SZ][MAX_CODE_LEN];
 typedef struct Node {
     char character;
     int count;
     struct Node *left;
     struct Node *right;
 } Node;
-
-// Объявления функций сжатия и декомпрессии
-int compressUsingHuffman(const char* input_file_name, const char* output_file_name);
-int decompressUsingHuffman(const char* input_file_name, const char* output_file_name);
-int compressUsingRLE(const char* inputFile, const char* outputFile);
-int decompressUsingRLE(const char* inputFile, const char* outputFile);
-
-#endif // COMPRESSOR_H
+void calculate_prob(char *str, int *counts);
+int comparator(const void *a, const void *b);
+Node *find_and_remove_min(Node *nodes, int sz);
+void dfs(Node *node, char *path, int sz);
+char *fileToString(char *file_name, long *size);
+void writeCodeBook(FILE* file);
+void writeBitToFile(unsigned char bit, FILE *file, int flush);
+void decompress(FILE *inputFile, Node *root, FILE *outputFile, long originalSize);
+void compressUsingRLE(char* inputFile, char* outputFile);
+void decompressUsingRLE( char* inputFile,  char* outputFile);
