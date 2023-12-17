@@ -18,13 +18,15 @@ void splashScreen() {
 
     char spinChars[] = "|/-\\";
     int spinIndex = 0;
-
-    // Остановить анимацию через 3 секунды
-    sleep(3);
-
-    // Очистить строку анимации и вернуться к началу
-    printf("\b\b\b\b\b\b"); // Убираем символы анимации и возвращаем курсор на начало
-    fflush(stdout); // Принудительно сбрасываем буфер вывода
+    for(int i =0; i<5;i++) {
+        printf("%c\b", spinChars[spinIndex]);
+        fflush(stdout);
+        spinIndex = (spinIndex + 1) % 4;
+       sleep(1);
+    }
+    
+    printf("\b\b\b\b\b\b");
+    fflush(stdout);
     printf("Initialization complete.\n\n");
 }
 int main(int argc, char* argv[]) {
@@ -32,20 +34,20 @@ int main(int argc, char* argv[]) {
 
     char *algorithm = argv[1];
     char *input_file_name = argv[2];
-    char *output_file_name = argv[3]; // Установим имя выходного файла по умолчанию
+    char *output_file_name = argv[3]; 
 
     if (strcmp(algorithm, "-h") == 0) {
         long file_size;
-        char *str = fileToString(argv[2], &file_size); // Правильно передайте имя файла
+        char *str = fileToString(argv[2], &file_size); 
         if (!str) {
             printf("Failed to read input file.\n");
             return 1;
         }
 
-        // Step 2: Calculate character probabilities
+        //  Calculating character probabilities
         calculate_prob(str, counts);
 
-        // Step 3: Build Huffman Tree
+        // Building Huffman Tree
         int node_count = 0;
         for (int i = 0; i < MAX_SZ; i++) {
             if (counts[i] != 0) node_count++;
@@ -68,11 +70,11 @@ int main(int argc, char* argv[]) {
         }
         Node *root = &nodes[0];
 
-        // Step 4: Generate Huffman codes
+        //  Generating Huffman codes
         char path[MAX_CODE_LEN] = {0};
         dfs(root, path, 0);
 
-        // Step 5: Write compressed file
+        //  Writing compressed file
         FILE *compressedFile = fopen(argv[3], "w");
         if (!compressedFile) {
             printf("Failed to open compressed file for writing.\n");
@@ -89,7 +91,7 @@ int main(int argc, char* argv[]) {
         writeBitToFile(0, compressedFile, 1); // Flush remaining bits
         fclose(compressedFile);
 
-        // Step 6: Read and decompress the file
+        //  Reading and decompressing the file
         compressedFile = fopen(argv[3], "rb");
         if (!compressedFile) {
             printf("Failed to open compressed file for reading.\n");
@@ -103,7 +105,7 @@ int main(int argc, char* argv[]) {
             return 1;
         }
 
-        decompress(compressedFile, root, decompressedFile, file_size); // Pass original file size
+        decompress(compressedFile, root, decompressedFile, file_size); 
 
         fclose(compressedFile);
         fclose(decompressedFile);
@@ -132,9 +134,6 @@ int main(int argc, char* argv[]) {
             return 1;
         }
 
-    } else {
-        fprintf(stderr, "Invalid algorithm. Use -h for Huffman or -r for RLE.\n");
-        return 1;
     }
 
     return 0;
