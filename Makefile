@@ -1,12 +1,13 @@
-CFLAGS= -std=c99 -g 
+CFLAGS=-std=c99 -g 
 
 all: main
-
-main: main.o compressor.o
-	gcc main.o compressor.o -o main
 
 %.o: %.c
 	gcc -c -o $@ $< $(CFLAGS)
 
+main: main.o 
+	gcc main.o  -o main
 clean:
 	rm -f *.o main
+run: main
+	./main
