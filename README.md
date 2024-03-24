@@ -1,40 +1,40 @@
-# Dokumentácia Projektu
+# Project Documentation
 
-## Úloha
-Tento projekt sa zameriava na vývoj nástroja pre kompresiu a dekompresiu súborov pomocou algoritmov Huffmanovho kódovania a behovej dĺžky (RLE). Nástroj poskytuje rozhranie príkazového riadka, ktoré umožňuje používateľom komprimovať a dekomprimovať súbory pomocou týchto algoritmov.
+## Task
+This project focuses on developing a tool for file compression and decompression using Huffman coding and Run-Length Encoding (RLE) algorithms. The tool provides a command-line interface that allows users to compress and decompress files using these algorithms.
 
-## Funkcionalita
-- **Kompresia**: Program dokáže komprimovať súbory pomocou Huffmanovho kódovania alebo algoritmu RLE. Huffmanovo kódovanie je efektívne pre súbory, v ktorých sa určité znaky vyskytujú častejšie než iné, zatiaľ čo RLE je jednoduchý a efektívny pre dáta s veľkým množstvom opakujúcich sa sekvencií.
-- **Dekompresia**: Program dokáže dekomprimovať súbory, ktoré boli predtým komprimované pomocou tých istých algoritmov, čím ich obnoví do ich pôvodného stavu.
+## Functionality
+- **Compression**: The program can compress files using either Huffman coding or the RLE algorithm. Huffman coding is efficient for files where certain characters occur more frequently than others, while RLE is simple and efficient for data with a large number of repeating sequences.
+- **Decompression**: The program can decompress files previously compressed using the same algorithms, restoring them to their original state.
 
-## Popis Riešenia
-- Projekt je implementovaný v jazyku C a pozostáva z viacerých modulov:
-  - `compressor.h` a `compressor.c` obsahujú deklarácie a implementácie funkcií kompresie a dekompresie.
-  - `main.c` implementuje hlavnú funkciu a rozhranie príkazového riadka.
-- Huffmanovo kódovanie je implementované vytvorením tabuľky frekvencií, zostavením Huffmanovho stromu na základe frekvencií a generovaním jedinečných binárnych kódov pre každý znak.
-- RLE je implementované čítaním sekvencií opakujúcich sa znakov a kódovaním ich ako jediného znaku nasledovaného jeho počtom.
+## Solution Description
+- The project is implemented in the C language and consists of multiple modules:
+  - `compressor.h` and `compressor.c` contain declarations and implementations of compression and decompression functions.
+  - `main.c` implements the main function and the command-line interface.
+- Huffman coding is implemented by creating a frequency table, building a Huffman tree based on the frequencies, and generating unique binary codes for each character.
+- RLE is implemented by reading sequences of repeating characters and encoding them as a single character followed by its count.
 
-## Podmienky Prevádzky
-- Program je navrhnutý tak, aby bežal na systémoch s C kompilátorom, ako je GCC.
-- Vyžaduje dostatočnú pamäť a úložný priestor na zvládnutie operácií so súbormi zahrnutých v procesoch kompresie a dekompresie.
-- Program očakáva argumenty príkazového riadka na špecifikáciu operácie (kompresia alebo dekompresia), algoritmu (Huffman alebo RLE) a mien vstupných/výstupných súborov.
+## Operating Conditions
+- The program is designed to run on systems with a C compiler such as GCC.
+- It requires sufficient memory and storage space to handle file operations involved in compression and decompression processes.
+- The program expects command-line arguments to specify the operation (compression or decompression), algorithm (Huffman or RLE), and input/output file names.
 
-## Kompilácia Projektu
-Projekt môžete skompilovať pomocou priloženého `Makefile`. Stačí spustiť nasledujúci príkaz v adresári projektu:  
+## Project Compilation
+You can compile the project using the provided `Makefile`. Simply run the following command in the project directory:  
 `make`
-Tento príkaz vytvorí spustiteľný súbor, ktorý môžete použiť na kompresiu alebo dekompresiu súborov.
+This command will create an executable file that you can use for file compression or decompression.
 
-## Spustenie Programu
-Po skompilovaní môžete program spustiť nasledovne:  
+## Running the Program
+After compilation, you can run the program as follows:  
 `./program -c|-d -h|-r input_file output_file`
-Kde:
-- `-c` značí kompresiu
-- `-d` značí dekompresiu
-- `-h` použiť Huffmanovo kódovanie
-- `-r` použiť RLE kódovanie
-- `input_file` je meno vstupného súboru
-- `output_file` je meno výstupného súboru
+Where:
+- `-c` indicates compression
+- `-d` indicates decompression
+- `-h` to use Huffman coding
+- `-r` to use RLE encoding
+- `input_file` is the input file name
+- `output_file` is the output file name
 
-## Referencie
-- Algoritmy pre Huffmanovo kódovanie a RLE boli založené na štandardných implementáciách, ako sú popísané v rôznych učebniciach informatiky a online zdrojoch.
-- Dokumentácia a tutoriály z [cplusplus.com](https://www.cplusplus.com) a [Stack Overflow](https://stackoverflow.com) boli použité pre špecifické implementačné detaily v jazyku C.
+## References
+- Algorithms for Huffman coding and RLE were based on standard implementations as described in various computer science textbooks and online resources.
+- Documentation and tutorials from [cplusplus.com](https://www.cplusplus.com) and [Stack Overflow](https://stackoverflow.com) were used for specific implementation details in the C language.
